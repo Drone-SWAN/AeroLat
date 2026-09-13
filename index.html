@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AeroLat | Research Paper</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #14532d;
+            --secondary: #15803d;
+            --secondary-dark: #166534;
+            --accent: #dcfce7;
+            --accent-strong: #bbf7d0;
+            --text: #17211b;
+            --muted: #66756b;
+            --border: #dce9df;
+            --background: #ffffff;
+            --section-bg: #f6fbf7;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --shadow: 0 20px 50px rgba(20, 83, 45, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(187, 247, 208, 0.62), transparent 34%),
+                radial-gradient(circle at 88% 12%, rgba(220, 252, 231, 0.85), transparent 30%),
+                linear-gradient(145deg, #f4fbf6 0%, #ffffff 58%, #f8fdf9 100%);
+            padding: 105px 24px 88px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 320px;
+            height: 320px;
+            left: -170px;
+            bottom: -180px;
+            background: rgba(21, 128, 61, 0.06);
+        }
+
+        .hero::after {
+            width: 220px;
+            height: 220px;
+            right: -90px;
+            top: -100px;
+            border: 40px solid rgba(21, 128, 61, 0.05);
+        }
+
+        .hero-content {
+            max-width: 1250px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .project-name {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(220, 252, 231, 0.9);
+            border: 1px solid var(--accent-strong);
+            color: var(--secondary-dark);
+            font-size: 0.83rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .aerolat-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .affiliation {
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        .project-name::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+            box-shadow: 0 0 0 5px rgba(21, 128, 61, 0.10);
+        }
+
+        .hero h1 {
+            max-width: 1200px;
+            margin: 25px auto 0;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.1;
+            color: var(--primary);
+        }
+
+        .authors {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 12px;
+            color: #33453a;
+        }
+
+        .authors span {
+            color: var(--secondary-dark);
+            font-weight: 700;
+        }
+
+        .authors i {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .emails {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 34px;
+        }
+
+        .emails a {
+            color: var(--secondary-dark);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .emails a:hover {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        .submission-box {
+            max-width: 760px;
+            margin: 38px auto 0;
+            border: 1px solid var(--accent-strong);
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            padding: 22px 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .submission-box .label {
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 7px;
+        }
+
+        .submission-box strong {
+            color: var(--primary);
+            font-size: 1.04rem;
+            font-weight: 700;
+        }
+
+        section {
+            padding: 92px 24px;
+        }
+
+        section:nth-of-type(even) {
+            background: var(--section-bg);
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+            font-size: clamp(1.85rem, 3vw, 2.45rem);
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 52px;
+            height: 4px;
+            margin: 12px auto 0;
+            border-radius: 999px;
+            background: var(--secondary);
+        }
+
+        .section-title p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        .abstract-text {
+            max-width: 920px;
+            margin: auto;
+            padding: 34px 38px;
+            font-size: 1.03rem;
+            text-align: justify;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: 0 14px 40px rgba(20, 83, 45, 0.055);
+        }
+
+        .abstract-text p::first-letter {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+
+        .architecture-wrapper {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .architecture-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px;
+            background: #ffffff;
+        }
+
+        .figure-caption {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 0.89rem;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #0d1b12;
+            border: 1px solid #b9d8c1;
+            box-shadow: var(--shadow);
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #0f3d24, #14532d);
+            color: #d9efe0;
+            text-align: center;
+            padding: 34px 20px;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
+        }
+
+        footer strong {
+            color: #ffffff;
+        }
+
+        @media (max-width: 700px) {
+            .hero {
+                padding: 78px 20px 64px;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.25rem, 3.3vw, 3rem);
+            }
+
+            .emails {
+                display: block;
+                line-height: 2;
+            }
+
+            section {
+                padding: 68px 18px;
+            }
+
+            .abstract-text {
+                padding: 24px 22px;
+                text-align: left;
+            }
+
+            .architecture-wrapper {
+                padding: 14px;
+            }
+
+            .submission-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================================
+     Hero Section
+========================================= -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="project-name">
+                <img src="logo.png" alt="AeroLat Logo" class="aerolat-logo">
+            </div>
+
+            <h1>
+                AeroLat: Channel-Aware Latent Space Semantic Communication for Decentralized UAV Swarms
+            </h1>
+
+
+            <!-- Authors -->
+
+            <div class="authors">
+
+                <span>Rajdeep Ghosh</span>, <i> Graduate Student Member, IEEE</i><br>
+                <span>Goparaju Venkata Seshachala Sree Vatsava</span>,<br>
+                <span>Sudip Misra</span>,<i> Fellow, IEEE, ACM</i>
+
+            </div>
+
+            <div class="affiliation">
+                Department of Computer Science and Engineering, Indian Institute of Technology Kharagpur, Kharagpur
+                721302, India
+            </div>
+
+
+            <!-- Emails -->
+
+            <div class="emails">
+
+                <a href="mailto:rajghosh2507.24@kgpian.iitkgp.ac.in">
+                    rajghosh2507.24@kgpian.iitkgp.ac.in
+                </a>
+
+                <span aria-hidden="true">•</span>
+
+                <a href="mailto:goparajusreevatsava@gmail.com">
+                    goparajusreevatsava@gmail.com
+                </a>
+
+                <span aria-hidden="true">•</span>
+
+                <a href="mailto:sudipm@iitkgp.ac.in">
+                    sudipm@iitkgp.ac.in
+                </a>
+
+            </div>
+
+
+            <!-- Submission Information -->
+
+            <div class="submission-box">
+
+                <div class="label">
+                    Submission
+                </div>
+
+                <strong>
+                    Submitted to IEEE Transactions on Communications, September 2026
+                </strong>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+     Abstract
+========================================= -->
+
+    <section id="abstract">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Abstract
+                </h2>
+
+                <p>
+                    Overview of AeroLat and its key contributions.
+                </p>
+
+            </div>
+
+
+            <div class="abstract-text">
+
+                <p>
+                    Communication in latent space offers an intriguing alternative to symbolic messages for
+                    decentralized autonomous Unmanned Aerial Vehicle (UAV) swarms operating over bandwidth-constrained,
+                    time-varying wireless links. However, when homogeneous frozen models are prompted with discretized
+                    perceptual inputs, their broadcast states collapse toward the shared prompt template, resulting in
+                    inter-agent similarity templates to overlap rather than have a true scene agreement – a research
+                    lacuna that we address in this work. In view of this, we propose AeroLat, a channel-aware latent
+                    semantic commu- nication framework that uses evidence injection, which injects the full visual
+                    posterior into the reasoning model together with template-subspace whitening to remove common modes
+                    induced by the prompt that would otherwise produce false inter-agent consensus. The resulting latent
+                    states are then passed through an explicit communication model that encompasses quantization,
+                    bandwidth-limited serialization, additive noise, mobility, and information staleness, which
+                    facilitates a joint assessment of communication fidelity and swarm-level coordination. Across
+                    multi-seed simulations, AeroLat provably remains resilient to codec choice, faults, channel
+                    impairments, and increasing swarm size. It consistently reproduces the latent-swarm anomaly, while
+                    no-whitening controls recover the collapse, and the effective rank of the circulating states grows
+                    with fleet size, thereby implying scalability. In particular, AeroLat is capable of reducing false
+                    similarity by 97.5%, while increasing scene-probe accuracy from 0.59 to 0.923 and achieving a
+                    semantic-relay success rate of 0.884, which is 38.1% higher than the evaluated baselines. Under
+                    mobility, 8× latent quantization incurs no measurable loss of task information during evaluation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+     System Architecture
+========================================= -->
+
+    <section id="architecture">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    System Architecture
+                </h2>
+
+                <p>
+                    Overview of the proposed AeroLat architecture.
+                </p>
+
+            </div>
+
+
+            <div class="architecture-wrapper">
+
+                <!--
+                Replace architecture.png
+                with your architecture image.
+            -->
+
+                <img src="AeroLat.png" alt="AeroLat System Architecture Diagram">
+
+
+                <div class="figure-caption">
+
+                    Figure 1:
+                    System architecture of the proposed AeroLat framework.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+     Video Demo
+========================================= -->
+
+    <section id="demo">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Video Demo
+                </h2>
+
+                <p>
+                    Demonstration of the proposed AeroLat system.
+                </p>
+
+            </div>
+
+
+            <div class="video-wrapper">
+
+                <!--
+                Replace VIDEO_ID with your YouTube video ID.
+
+                Example:
+                https://www.youtube.com/watch?v=abc123
+
+                becomes:
+
+                https://www.youtube.com/embed/abc123
+            -->
+
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="AeroLat Video Demo" allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share
+                " allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+     Footer
+========================================= -->
+
+    <footer>
+
+        <p>
+            <strong>AeroLat</strong>
+            <span aria-hidden="true">•</span>
+            Research Project
+            <span aria-hidden="true">•</span>
+            © 2026
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
