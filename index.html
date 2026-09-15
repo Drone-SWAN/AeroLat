@@ -461,25 +461,7 @@
             <div class="abstract-text">
 
                 <p>
-                    Communication in latent space offers an intriguing alternative to symbolic messages for
-                    decentralized autonomous Unmanned Aerial Vehicle (UAV) swarms operating over bandwidth-constrained,
-                    time-varying wireless links. However, when homogeneous frozen models are prompted with discretized
-                    perceptual inputs, their broadcast states collapse toward the shared prompt template, resulting in
-                    inter-agent similarity templates to overlap rather than have a true scene agreement – a research
-                    lacuna that we address in this work. In view of this, we propose AeroLat, a channel-aware latent
-                    semantic commu- nication framework that uses evidence injection, which injects the full visual
-                    posterior into the reasoning model together with template-subspace whitening to remove common modes
-                    induced by the prompt that would otherwise produce false inter-agent consensus. The resulting latent
-                    states are then passed through an explicit communication model that encompasses quantization,
-                    bandwidth-limited serialization, additive noise, mobility, and information staleness, which
-                    facilitates a joint assessment of communication fidelity and swarm-level coordination. Across
-                    multi-seed simulations, AeroLat provably remains resilient to codec choice, faults, channel
-                    impairments, and increasing swarm size. It consistently reproduces the latent-swarm anomaly, while
-                    no-whitening controls recover the collapse, and the effective rank of the circulating states grows
-                    with fleet size, thereby implying scalability. In particular, AeroLat is capable of reducing false
-                    similarity by 97.5%, while increasing scene-probe accuracy from 0.59 to 0.923 and achieving a
-                    semantic-relay success rate of 0.884, which is 38.1% higher than the evaluated baselines. Under
-                    mobility, 8× latent quantization incurs no measurable loss of task information during evaluation.
+                    Communication in latent space offers an intriguing alternative to symbolic messages for decentralized autonomous Unmanned Aerial Vehicle (UAV) swarms operating over bandwidth-constrained, time-varying wireless links. However, when homogeneous frozen models are prompted with discretized perceptual inputs, their broadcast states collapse toward the shared prompt template.  In view of this, we propose AeroLat, a channel-aware latent semantic communication framework that uses evidence injection. The resulting latent states are then passed through an explicit communication model that encompasses bandwidth-limited serialization, additive noise and information staleness, which facilitates a joint assessment of communication fidelity and swarm-level coordination. Across multi-seed simulations, AeroLat provably remains resilient to codec choice, faults and increasing swarm size. It consistently reproduces the latent-swarm anomaly, while no-whitening controls recover the collapse. In particular, AeroLat is capable of reducing false similarity by 97.5%.
                 </p>
 
             </div>
